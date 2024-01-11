@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.suggestion {
+    padding: 8px;
+    transition: background .3s, color .3s;
+    position: relative;
+    z-index: 100;
+}
+
+.suggestion > .suggestion-text {
+    position: relative;
+    z-index: 10;
+}
+
+.suggestion::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 40px;
+    background-color: #10766E;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s;
+}
+
+.suggestion:hover {
+    color: white;
+}
+
+.suggestion:hover::after {
+    transform: scaleX(1);
+}

@@ -1,4 +1,6 @@
-const accessToken = 'pk.eyJ1IjoiZ2FicmllbGNhcnZhbGgwIiwiYSI6ImNscG14ZDB6OTAwc3Eya29pM2dvZm5uamYifQ.IPac1tcfJTcmQLrrn937wQ'
+const accessToken = 'pk.eyJ1IjoiZ2FicmllbGNhcnZhbGgwIiwiYSI6ImNscjltcjF2ZjAzZW4ya3Q2bWx1dmg0dnkifQ.KrP_ZKhIL4h_bKPXGIUYWw'
+const input = document.querySelector('.input')
+const suggestions = document.querySelector('.suggestions')
 
 navigator.geolocation.getCurrentPosition(
     ({ coords: {latitude, longitude} }) => setupMap(longitude, latitude),
@@ -16,5 +18,25 @@ const setupMap = (lng, lat) => {
         minZoom: 5,
         language: 'pt'
     })
-    map.addControl(new mapboxgl.NavigationControl());
+    map.addControl(new mapboxgl.NavigationControl())
 }
+
+input.addEventListener('input', async () => {
+    const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${input.value}.json?proximity=ip&access_token=${accessToken}&language=pt&limit=4`
+    const data = await fetch(url)
+    // const json = await data.json()
+    const { features: places } = await data.json()
+    console.clear()
+    suggestions.innerHTML = ''
+    places.forEach(place => {
+        const suggestion = document.createElement('li')
+        const text = document.createElement('span')
+        text.classList.add('suggestion-text')
+        text.textContent = place.place_name
+        suggestion.appendChild(text)
+
+        suggestion.classList.add('suggestion')
+        suggestions.appendChild(suggestion)
+        console.log(place.text)
+    })
+})
