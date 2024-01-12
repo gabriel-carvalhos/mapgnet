@@ -7,18 +7,16 @@
     <link rel="stylesheet" href="./css/output.css">
     <script src='https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css' rel='stylesheet' />
-
 </head>
 <body>
-    <form class="absolute top-3 left-3 z-10">
+    <form class="absolute z-10 max-w-80 p-3">
         <input tabindex="0" class="input w-60 p-3 rounded-3xl transition opacity-80 outline-none focus:p-[10px] focus:opacity-100 focus:border-solid focus:border-2 focus:border-teal-700 focus:shadow-[0_0_0_.25rem_rgba(15,118,110,.25)]" type="text" placeholder="Digite o endereço">
         <div class="mt-2 bg-white rounded-xl overflow-hidden">
-            <ul class="suggestions"></ul>
+            <ul class="suggestions w-full hidden"></ul>
         </div>
     </form>
 
     <div id="map" class="min-h-screen"></div>
-
     <script type="module" src="./js/index.js"></script>
 </body>
 </html>

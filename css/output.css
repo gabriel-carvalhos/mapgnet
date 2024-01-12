@@ -548,14 +548,6 @@ video {
   position: absolute;
 }
 
-.left-3 {
-  left: 0.75rem;
-}
-
-.top-3 {
-  top: 0.75rem;
-}
-
 .z-10 {
   z-index: 10;
 }
@@ -564,12 +556,24 @@ video {
   margin-top: 0.5rem;
 }
 
+.hidden {
+  display: none;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
 
 .w-60 {
   width: 15rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.max-w-80 {
+  max-width: 20rem;
 }
 
 .overflow-hidden {
@@ -615,6 +619,7 @@ video {
   transition: background .3s, color .3s;
   position: relative;
   z-index: 100;
+  cursor: pointer;
 }
 
 .suggestion > .suggestion-text {
@@ -626,7 +631,7 @@ video {
   content: '';
   display: block;
   width: 100%;
-  height: 40px;
+  height: 100%;
   background-color: #10766E;
   position: absolute;
   z-index: 1;
