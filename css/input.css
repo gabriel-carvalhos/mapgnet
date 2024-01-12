@@ -2,38 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-.suggestion {
-    padding: 8px;
-    transition: background .3s, color .3s;
-    position: relative;
-    z-index: 100;
-    cursor: pointer;
-}
+@layer components {
+    .suggestion {
+        @apply p-2 transition-colors relative cursor-pointer after:block after:w-full after:h-full after:bg-teal-700 after:absolute after:z-10 after:top-0 after:left-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:text-white hover:after:scale-100;
+    }
 
-.suggestion > .suggestion-text {
-    position: relative;
-    z-index: 10;
-}
-
-.suggestion::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: #10766E;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform .3s;
-}
-
-.suggestion:hover {
-    color: white;
-}
-
-.suggestion:hover::after {
-    transform: scaleX(1);
+    .suggestion-text {
+        @apply relative z-20;
+    }
 }

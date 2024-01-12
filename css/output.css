@@ -544,6 +544,51 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.suggestion {
+  position: relative;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.suggestion::after {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: left;
+  --tw-scale-x: 0;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 118 110 / var(--tw-bg-opacity));
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  content: var(--tw-content);
+  transition-duration: 300ms;
+}
+
+.suggestion:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.suggestion:hover::after {
+  content: var(--tw-content);
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.suggestion-text {
+  position: relative;
+  z-index: 20;
+}
+
 .absolute {
   position: absolute;
 }
@@ -612,42 +657,6 @@ video {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-}
-
-.suggestion {
-  padding: 8px;
-  transition: background .3s, color .3s;
-  position: relative;
-  z-index: 100;
-  cursor: pointer;
-}
-
-.suggestion > .suggestion-text {
-  position: relative;
-  z-index: 10;
-}
-
-.suggestion::after {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-color: #10766E;
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .3s;
-}
-
-.suggestion:hover {
-  color: white;
-}
-
-.suggestion:hover::after {
-  transform: scaleX(1);
 }
 
 .focus\:border-2:focus {
