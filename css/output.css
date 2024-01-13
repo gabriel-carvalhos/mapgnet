@@ -834,8 +834,16 @@ select {
   display: none;
 }
 
+.h-0 {
+  height: 0px;
+}
+
 .min-h-screen {
   min-height: 100vh;
+}
+
+.min-h-0 {
+  min-height: 0px;
 }
 
 .w-60 {
@@ -848,6 +856,11 @@ select {
 
 .max-w-80 {
   max-width: 20rem;
+}
+
+.scale-y-0 {
+  --tw-scale-y: 0;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .overflow-hidden {
@@ -875,6 +888,10 @@ select {
   padding: 0.75rem;
 }
 
+.opacity-0 {
+  opacity: 0;
+}
+
 .blur {
   --tw-blur: blur(8px);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -884,6 +901,12 @@ select {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-all {
+  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -902,4 +925,37 @@ select {
 .focus\:ring-teal-700:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(15 118 110 / var(--tw-ring-opacity));
+}
+
+.group:focus .group-focus\:h-40 {
+  height: 10rem;
+}
+
+.group:focus .group-focus\:min-h-40 {
+  min-height: 10rem;
+}
+
+.peer:focus ~ .peer-focus\:block {
+  display: block;
+}
+
+.peer:focus ~ .peer-focus\:h-40 {
+  height: 10rem;
+}
+
+.peer:focus ~ .peer-focus\:min-h-fit {
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+}
+
+.peer:focus ~ .peer-focus\:min-h-40 {
+  min-height: 10rem;
+}
+
+.peer:focus ~ .peer-focus\:rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.peer:focus ~ .peer-focus\:\[height\:40px\;\] {
+  height: 40px;;
 }

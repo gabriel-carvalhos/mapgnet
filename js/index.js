@@ -40,11 +40,3 @@ input.addEventListener('input', async () => {
         console.log(place.text)
     })
 })
-
-input.addEventListener('focus', () => {
-    suggestions.classList.remove('hidden')
-})
-
-input.addEventListener('blur', () => {
-    suggestions.classList.add('hidden')
-})
