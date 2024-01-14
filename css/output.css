@@ -830,12 +830,20 @@ select {
   margin-top: 0.5rem;
 }
 
+.grid {
+  display: grid;
+}
+
 .hidden {
   display: none;
 }
 
 .h-0 {
   height: 0px;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .min-h-screen {
@@ -861,6 +869,18 @@ select {
 .scale-y-0 {
   --tw-scale-y: 0;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.grid-rows-none {
+  grid-template-rows: none;
+}
+
+.grid-rows-\[0\] {
+  grid-template-rows: 0;
+}
+
+.grid-rows-\[0fr\] {
+  grid-template-rows: 0fr;
 }
 
 .overflow-hidden {
@@ -911,6 +931,10 @@ select {
   transition-duration: 150ms;
 }
 
+.empty\:h-0:empty {
+  height: 0px;
+}
+
 .focus\:border-teal-700:focus {
   --tw-border-opacity: 1;
   border-color: rgb(15 118 110 / var(--tw-border-opacity));
@@ -958,4 +982,58 @@ select {
 
 .peer:focus ~ .peer-focus\:\[height\:40px\;\] {
   height: 40px;;
+}
+
+.peer:focus:not(:empty) ~ .peer-\[\&\:focus\:not\(\:empty\)\]\:h-40 {
+  height: 10rem;
+}
+
+.peer:focus:not(:empty) ~ .peer-\[\&\:focus\:not\(\:empty\)_ul\]\:h-40 ul {
+  height: 10rem;
+}
+
+.peer:focus:not(:empty) ~ .peer-\[\:focus\:not\(\:empty\)_ul\]\:h-40 ul {
+  height: 10rem;
+}
+
+.peer:focus ~ .peer-\[\&\:focus_ul\:not\(\:empty\)\]\:h-40 ul:not(:empty) {
+  height: 10rem;
+}
+
+.peer:focus ~ .peer-\[\&\:focus_ul\:not\(\:empty\)\]\:h-fit ul:not(:empty) {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.peer:focus ~ .peer-\[\&\:focus_ul\:not\(\:empty\)\]\:h-auto ul:not(:empty) {
+  height: auto;
+}
+
+.peer:focus ~ .peer-\[\&\:focus_ul\:not\(\:empty\)\]\:h-max ul:not(:empty) {
+  height: -moz-max-content;
+  height: max-content;
+}
+
+.peer:focus ~ .peer-\[\&\:focus_ul\:not\(\:empty\)\]\:grid-rows-none ul:not(:empty) {
+  grid-template-rows: none;
+}
+
+.peer:focus ~ .peer-\[\&\:focus_ul\:not\(\:empty\)\]\:grid-rows-1 ul:not(:empty) {
+  grid-template-rows: repeat(1, minmax(0, 1fr));
+}
+
+.peer:focus ~ .peer-\[\&\:focus_ul\:not\(\:empty\)\]\:grid-rows-\[1\] ul:not(:empty) {
+  grid-template-rows: 1;
+}
+
+.peer:focus ~ .peer-\[\&\:focus_ul\:not\(\:empty\)\]\:grid-rows-\[1fr\] ul:not(:empty) {
+  grid-template-rows: 1fr;
+}
+
+.peer:focus ~ .peer-focus\:\[\&\:not\(\)\]\:h-40:not() {
+  height: 10rem;
+}
+
+.peer:focus ~ .peer-focus\:\[\&\:not\(\:empty\)\]\:h-40:not(:empty) {
+  height: 10rem;
 }
