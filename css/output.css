@@ -818,6 +818,10 @@ select {
   z-index: 20;
 }
 
+.pointer-events-none {
+  pointer-events: none;
+}
+
 .absolute {
   position: absolute;
 }
@@ -830,28 +834,8 @@ select {
   margin-top: 0.5rem;
 }
 
-.grid {
-  display: grid;
-}
-
-.hidden {
-  display: none;
-}
-
-.h-0 {
-  height: 0px;
-}
-
-.h-full {
-  height: 100%;
-}
-
 .min-h-screen {
   min-height: 100vh;
-}
-
-.min-h-0 {
-  min-height: 0px;
 }
 
 .w-60 {
@@ -866,21 +850,13 @@ select {
   max-width: 20rem;
 }
 
-.scale-y-0 {
-  --tw-scale-y: 0;
+.origin-top {
+  transform-origin: top;
+}
+
+.translate-y-\[10\%\] {
+  --tw-translate-y: 10%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.grid-rows-none {
-  grid-template-rows: none;
-}
-
-.grid-rows-\[0\] {
-  grid-template-rows: 0;
-}
-
-.grid-rows-\[0fr\] {
-  grid-template-rows: 0fr;
 }
 
 .overflow-hidden {
@@ -912,11 +888,6 @@ select {
   opacity: 0;
 }
 
-.blur {
-  --tw-blur: blur(8px);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
 .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -931,8 +902,8 @@ select {
   transition-duration: 150ms;
 }
 
-.empty\:h-0:empty {
-  height: 0px;
+.duration-500 {
+  transition-duration: 500ms;
 }
 
 .focus\:border-teal-700:focus {
@@ -951,89 +922,19 @@ select {
   --tw-ring-color: rgb(15 118 110 / var(--tw-ring-opacity));
 }
 
-.group:focus .group-focus\:h-40 {
-  height: 10rem;
+.peer:focus ~ .peer-focus\:pointer-events-auto {
+  pointer-events: auto;
 }
 
-.group:focus .group-focus\:min-h-40 {
-  min-height: 10rem;
+.peer:focus ~ .peer-focus\:translate-y-0 {
+  --tw-translate-y: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.peer:focus ~ .peer-focus\:block {
-  display: block;
+.peer:focus ~ .peer-focus\:opacity-100 {
+  opacity: 1;
 }
 
-.peer:focus ~ .peer-focus\:h-40 {
-  height: 10rem;
-}
-
-.peer:focus ~ .peer-focus\:min-h-fit {
-  min-height: -moz-fit-content;
-  min-height: fit-content;
-}
-
-.peer:focus ~ .peer-focus\:min-h-40 {
-  min-height: 10rem;
-}
-
-.peer:focus ~ .peer-focus\:rounded-xl {
-  border-radius: 0.75rem;
-}
-
-.peer:focus ~ .peer-focus\:\[height\:40px\;\] {
-  height: 40px;;
-}
-
-.peer:focus:not(:empty) ~ .peer-\[\&\:focus\:not\(\:empty\)\]\:h-40 {
-  height: 10rem;
-}
-
-.peer:focus:not(:empty) ~ .peer-\[\&\:focus\:not\(\:empty\)_ul\]\:h-40 ul {
-  height: 10rem;
-}
-
-.peer:focus:not(:empty) ~ .peer-\[\:focus\:not\(\:empty\)_ul\]\:h-40 ul {
-  height: 10rem;
-}
-
-.peer:focus ~ .peer-\[\&\:focus_ul\:not\(\:empty\)\]\:h-40 ul:not(:empty) {
-  height: 10rem;
-}
-
-.peer:focus ~ .peer-\[\&\:focus_ul\:not\(\:empty\)\]\:h-fit ul:not(:empty) {
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
-.peer:focus ~ .peer-\[\&\:focus_ul\:not\(\:empty\)\]\:h-auto ul:not(:empty) {
-  height: auto;
-}
-
-.peer:focus ~ .peer-\[\&\:focus_ul\:not\(\:empty\)\]\:h-max ul:not(:empty) {
-  height: -moz-max-content;
-  height: max-content;
-}
-
-.peer:focus ~ .peer-\[\&\:focus_ul\:not\(\:empty\)\]\:grid-rows-none ul:not(:empty) {
-  grid-template-rows: none;
-}
-
-.peer:focus ~ .peer-\[\&\:focus_ul\:not\(\:empty\)\]\:grid-rows-1 ul:not(:empty) {
-  grid-template-rows: repeat(1, minmax(0, 1fr));
-}
-
-.peer:focus ~ .peer-\[\&\:focus_ul\:not\(\:empty\)\]\:grid-rows-\[1\] ul:not(:empty) {
-  grid-template-rows: 1;
-}
-
-.peer:focus ~ .peer-\[\&\:focus_ul\:not\(\:empty\)\]\:grid-rows-\[1fr\] ul:not(:empty) {
-  grid-template-rows: 1fr;
-}
-
-.peer:focus ~ .peer-focus\:\[\&\:not\(\)\]\:h-40:not() {
-  height: 10rem;
-}
-
-.peer:focus ~ .peer-focus\:\[\&\:not\(\:empty\)\]\:h-40:not(:empty) {
-  height: 10rem;
+.peer:focus ~ .peer-focus\:duration-300 {
+  transition-duration: 300ms;
 }

@@ -12,8 +12,8 @@
 
     <form class="absolute z-10 max-w-80 p-3">
         <input class="peer input w-60 border-none rounded-3xl transition focus:ring-2 focus:ring-teal-700 focus:border-teal-700" tabindex="0" type="text" placeholder="Digite o endereço">
-        <div class="mt-2 bg-white rounded-xl overflow-hidden transition-all peer-[&:focus_ul:not(:empty)]:h-40">
-            <ul class="grid suggestions w-full transition-all h-0"></ul>
+        <div class="mt-2 bg-white rounded-xl overflow-hidden transition-all duration-500 origin-top translate-y-[10%] peer-focus:translate-y-0 opacity-0 peer-focus:opacity-100 pointer-events-none peer-focus:pointer-events-auto">
+            <ul class="suggestions w-full overflow-hidden"></ul>
         </div>
     </form>
 
