@@ -37,6 +37,15 @@ input.addEventListener('input', async () => {
 
         suggestion.classList.add('suggestion')
         suggestions.appendChild(suggestion)
-        console.log(place.text)
     })
+})
+
+input.addEventListener('focus', () => {
+    input.classList.add('focused')
+})
+
+document.addEventListener('click', (e) => {
+    if (!input.contains(e.target) && !suggestions.contains(e.target)) {
+        input.classList.remove('focused')
+    }
 })
