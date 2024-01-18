@@ -45,7 +45,7 @@ input.addEventListener('input', async () => {
     const data = await fetch(url)
     // const json = await data.json()
     const { features: places } = await data.json()
-    console.clear()
+    // console.clear()
     suggestions.innerHTML = ''
     places.forEach(place => {
         const suggestion = document.createElement('li')
@@ -57,6 +57,9 @@ input.addEventListener('input', async () => {
         suggestion.addEventListener('click', () => {
             start.addTo(map)
             end.setLngLat(place.center).addTo(map)
+
+            getRoute(start.getLngLat(), end.getLngLat())
+
             map.easeTo({ center: place.center })
 
             input.value = place.place_name
@@ -67,6 +70,45 @@ input.addEventListener('input', async () => {
         suggestions.appendChild(suggestion)
     })
 })
+
+const getRoute = async (start, end) => {
+    const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${start.lng},${start.lat};${end.lng},${end.lat}?geometries=geojson&access_token=${accessToken}`
+    const data = await fetch(url)
+    const json = await data.json()
+    const route = json.routes[0]
+    console.log(json) // start of error
+
+    const geojson = {
+        type: 'Feature',
+        properties: {},
+        geometry: {
+            type: 'LineString',
+            coordinates: route.geometry.coordinates
+        }
+    }
+
+    if (map.getSource('route')) {
+        map.getSource('route').setData(geojson)
+    } else {
+        map.addLayer({
+            id: 'route',
+            type: 'line',
+            source: {
+                type: 'geojson',
+                data: geojson
+            },
+            layout: {
+                'line-join': 'round',
+                'line-cap': 'round'
+            },
+            paint: {
+                'line-color': '#3887be',
+                'line-width': 5,
+                'line-opacity': 0.75
+            }
+        })
+    }
+}
 
 input.addEventListener('focus', () => {
     input.classList.add('focused')
