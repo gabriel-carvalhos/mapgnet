@@ -10,7 +10,7 @@ const getUserPosition = () => {
 
 const setUserCoords = async () => {
     try {
-        const { coords: {latitude, longitude} } = await getUserPosition()
+        const { coords: { latitude, longitude } } = await getUserPosition()
         return [longitude, latitude]
     } catch (err) {
         return [-46.625290, -23.533773]
@@ -76,7 +76,7 @@ const getRoute = async (start, end) => {
     const data = await fetch(url)
     const json = await data.json()
     const route = json.routes[0]
-    console.log(json) // start of error
+    // console.log(json) // start of error
 
     const geojson = {
         type: 'Feature',
@@ -108,6 +108,21 @@ const getRoute = async (start, end) => {
             }
         })
     }
+
+    setZoomRoute(route)
+}
+
+const setZoomRoute = route => {
+    const bounds = new mapboxgl.LngLatBounds(
+        route.geometry.coordinates[0],
+        route.geometry.coordinates[0]
+    )
+    
+    route.geometry.coordinates.forEach(coord => {
+        bounds.extend(coord)
+    })
+
+    map.fitBounds(bounds, { padding: 50 })
 }
 
 input.addEventListener('focus', () => {
