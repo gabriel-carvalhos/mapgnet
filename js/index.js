@@ -1,6 +1,7 @@
 const accessToken = 'pk.eyJ1IjoiZ2FicmllbGNhcnZhbGgwIiwiYSI6ImNscjltcjF2ZjAzZW4ya3Q2bWx1dmg0dnkifQ.KrP_ZKhIL4h_bKPXGIUYWw'
 const input = document.querySelector('.input')
 const suggestions = document.querySelector('.suggestions')
+let route
 
 const getUserPosition = () => {
     return new Promise((resolve, reject) => {
@@ -31,12 +32,12 @@ const map = new mapboxgl.Map({
 map.addControl(new mapboxgl.NavigationControl())
 
 const start = new mapboxgl.Marker({
-    color: '#2C6493',
+    color: 'rgb(15, 118, 110)',
     draggable: true
 }).setLngLat(coords)
 
 const end = new mapboxgl.Marker({
-    color: '#ef9652',
+    color: 'rgb(15, 118, 110)',
     draggable: true
 })
 
@@ -93,7 +94,7 @@ const getRoute = async (start, end) => {
     const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${start.lng},${start.lat};${end.lng},${end.lat}?geometries=geojson&access_token=${accessToken}`
     const data = await fetch(url)
     const json = await data.json()
-    const route = json.routes[0]
+    route = json.routes[0]
     // console.log(json) // start of error
 
     const geojson = {
@@ -142,6 +143,12 @@ const setZoomRoute = route => {
 
     map.fitBounds(bounds, { padding: 100 })
 }
+
+window.addEventListener('resize', () => {
+    if (route) {
+        setZoomRoute(route)
+    }
+})
 
 input.addEventListener('focus', () => {
     input.classList.add('focused')
