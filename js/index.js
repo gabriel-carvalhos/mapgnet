@@ -40,13 +40,31 @@ const end = new mapboxgl.Marker({
     draggable: true
 })
 
-input.addEventListener('input', async () => {
-    const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${input.value}.json?proximity=ip&access_token=${accessToken}&language=pt&limit=4`
-    const data = await fetch(url)
+start.on('dragend', async () => {
+    const newCoords = start.getLngLat()
+    start.setLngLat(newCoords)
+    getRoute(newCoords, end.getLngLat())
+})
+
+end.on('dragend', async () => {
+    const newCoords = end.getLngLat()
+    end.setLngLat(newCoords)
+    getRoute(start.getLngLat(), newCoords)
+    const newAddress = await dataResult(newCoords)
+    input.value = `${newAddress[0].place_name}`
+})
+
+const dataResult = async query => {
+    let endpoint = typeof query == 'string' ? `${query}.json?limit=4` : `${query.lng},${query.lat}.json?limit=1`
+    const data = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${endpoint}&access_token=${accessToken}&language=pt&proximity=ip`)
     // const json = await data.json()
     const { features: places } = await data.json()
-    // console.clear()
+    return places
+}
+
+input.addEventListener('input', async () => {
     suggestions.innerHTML = ''
+    const places = await dataResult(input.value)
     places.forEach(place => {
         const suggestion = document.createElement('li')
         const text = document.createElement('span')
@@ -122,7 +140,7 @@ const setZoomRoute = route => {
         bounds.extend(coord)
     })
 
-    map.fitBounds(bounds, { padding: 50 })
+    map.fitBounds(bounds, { padding: 100 })
 }
 
 input.addEventListener('focus', () => {
